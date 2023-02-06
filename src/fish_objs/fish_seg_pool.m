@@ -263,8 +263,12 @@ classdef fish_seg_pool < fish_seg
                 cur_fish = this.daughter_fish(ii);
                 
                 % exclude overlap of stripes with calibration region
-                val_stripe_ixs = cur_fish.ixs_in_stripe & ...
-                    ~repmat(cur_fish.ixs_in_calib,[1,nstripes]);
+                if ~isempty(cur_fish.ixs_in_calib)
+                    val_stripe_ixs = cur_fish.ixs_in_stripe & ...
+                        ~repmat(cur_fish.ixs_in_calib,[1,nstripes]);
+                else
+                    val_stripe_ixs = cur_fish.ixs_in_stripe;
+                end
                 
                 cur_stripe_fluo = nan(1,nstripes);
                 if ~cur_fish.skip
