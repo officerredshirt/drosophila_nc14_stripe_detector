@@ -1,6 +1,6 @@
 # Semi-automated stripe detection pipeline for stage 5 fruit fly embryos
 
-This MATLAB package implements a semi-automated processing pipeline for detecting and analyzing stripes of gene expression in early (stage 5) _Drosophila melanogaster_ embryos. An earlier version of this code was used in [Galupa et al. 2023](https://doi.org/10.1016/j.devcel.2022.12.003).
+This MATLAB package implements a semi-automated processing pipeline for detecting and analyzing stripes of gene expression in early (stage 5) _Drosophila melanogaster_ embryos. An earlier version of this code was used in [Galupa et al. (2023)](https://doi.org/10.1016/j.devcel.2022.12.003).
 
 The stripe detection algorithm was designed for the _eve_ gene but also functions for similarly distinct stripe patterns such as _ftz_ or _rho_. It relies on a segmented image with individually measured nuclear fluorescence levels.
 
