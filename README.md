@@ -10,6 +10,10 @@ Be forewarned that this is "research-grade" code that has not been optimized for
 
 We used this code on embryos fixed and processed with standard immunofluorescence stain or FISH protocols. The code for segmentation was adapted from the Garcia lab [mRNADynamics package](https://github.com/GarciaLab/mRNADynamics) and works on the DAPI channel. The code supports co-staining with built-in options for _sna_ or _fkh_ to normalize fluorescence and (in the case of _sna_) identify stripe width at a fixed point on the dorsoventral axis.
 
+<h3>Directory structure</h3>
+Files are assumed to be stored in [rootdir]/[proj]/[date] and to have the CZI file extension (if necessary this should be straightforward to modify since the code ultimately relies on the BioFormats library for image extraction). Results are saved in [rootdir]/processed_data/[proj]/[date] as MAT files with the same filename as the original image files.
+
+<h3>Processing pipeline</h3>
 The pipeline is invoked from the executable "main.m" and is outlined as follows:
 
 1. Microscope images are loaded and Z-stacks are unpacked into individual TIFF files. As written it is assumed there is one CZI file per embryo, although the code can be modified to accommodate single CZI files with multiple embryos. The user-defined "histone channel" is used to generate a projectoin image that will be used for segmentation.
@@ -21,7 +25,3 @@ The pipeline is invoked from the executable "main.m" and is outlined as follows:
 7. Stripe width is calculated and saved alongside other embryo data in a "fish_seg" object.
 
 Once the data are generated for individual embryos, the user may optionally pool related embryos into a single "fish_pool" object that can be used for further analysis, for example, to calculate the mean stripe width across many samples. The user can then use the built-in plot functions for the "fish_pool" object or export the pooled data into a CSV file.
-
-<h3>Directory structure</h3>
-
-Files are assumed to be stored in [rootdir]/[proj]/[date] and to have the CZI file extension (if necessary this should be straightforward to modify since the code ultimately relies on the BioFormats library for image extraction). Results are saved in [rootdir]/processed_data/[proj]/[date] as ".m" files with the same filename as the original image files.
